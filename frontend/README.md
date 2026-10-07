@@ -24,4 +24,10 @@ Add an entry to `src/tutorials.ts` with the folder name (`slug`), a title, a one
 
 ## Deploying
 
-`dist/` is a fully static build with relative asset paths (`base: './'` in `vite.config.ts`), so it can be served from a domain root or a sub-path such as GitHub Pages.
+`.github/workflows/deploy-frontend.yml` builds the site and publishes it to GitHub Pages on every push to `main` that touches `frontend/`. Pull requests get a build-and-lint check only. It can also be run by hand from the Actions tab.
+
+Live site: https://whatsnextclarity00.github.io/agents-towards-production/
+
+One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
+
+`dist/` uses relative asset paths (`base: './'` in `vite.config.ts`), so the same build also works from a domain root.
