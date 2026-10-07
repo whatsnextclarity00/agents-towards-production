@@ -1,32 +1,27 @@
-# React + TypeScript + Vite
+# Agents Towards Production — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small static site that lists the tutorials in this repository, with search and category filters. Each card links to the tutorial's folder on GitHub.
 
-Currently, two official plugins are available:
+Built with React, TypeScript and Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Requirements
 
-## React Compiler
+Node.js `^20.19.0 || >=22.12.0` (required by Vite 8).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Commands
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server with hot reload
+npm run build    # type-check and build to dist/
+npm run preview  # serve the production build locally
+npm run lint     # lint with oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Adding a tutorial
+
+Add an entry to `src/tutorials.ts` with the folder name (`slug`), a title, a one-line description and a category.
+
+## Deploying
+
+`dist/` is a fully static build with relative asset paths (`base: './'` in `vite.config.ts`), so it can be served from a domain root or a sub-path such as GitHub Pages.
